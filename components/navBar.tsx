@@ -11,7 +11,7 @@ export const CustomNavbar = () => {
           HOME
         </li>
         <li className="text-slate-200/100 list-none mx-5 cursor-pointer">
-          COURSES
+          MY COURSES
         </li>
         <li className="text-slate-200/100 list-none mx-5 cursor-pointer">
           ABOUT US
