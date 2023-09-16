@@ -1,6 +1,6 @@
 "use client";
 
-import { CustomCard } from "../Main/card";
+import { CustomCard } from "./card";
 
 export const MainContent = () => {
   return (

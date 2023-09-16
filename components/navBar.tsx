@@ -1,6 +1,10 @@
 "use client";
 
-export const CustomNavbar = () => {
+interface NavbarProps {
+  LogIn: any;
+}
+
+export const CustomNavbar = (props: NavbarProps) => {
   return (
     <div className="bg-gradient-to-r from-fuchsia-950 to-gray-950 h-20">
       <h1 className=" text-purple-600/100 font-bold text-3xl flex align-middle py-5 px-4">
@@ -16,10 +20,19 @@ export const CustomNavbar = () => {
         <li className="text-slate-200/100 list-none mx-5 cursor-pointer">
           ABOUT US
         </li>
-        <li className="text-slate-200/100 list-none mx-3 cursor-pointer">
-          PROFILE
+        <li
+          className="text-slate-200/100 list-none mx-3 cursor-pointer"
+          onClick={() => props.LogIn()}
+        >
+          Login
         </li>
-        {/* <div className=" inline-flex w-1/12 justify-between text-slate-200/100 ">
+      </div>
+    </div>
+  );
+};
+
+{
+  /* <div className=" inline-flex w-1/12 justify-between text-slate-200/100 ">
         <button>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -37,8 +50,5 @@ export const CustomNavbar = () => {
           </svg>
           LOGOUT
         </button>
-      </div> */}
-      </div>
-    </div>
-  );
-};
+      </div> */
+}

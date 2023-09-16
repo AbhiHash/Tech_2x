@@ -1,21 +1,9 @@
-import { CustomNavbar } from "@/components/navBar";
-import { MainContent } from "@/components/Main/main";
-import { SideNav } from "@/components/sideNav";
-import SignInPage from "@/components/Login/signIn";
-
-export const metadata = {
-  title: "Tech-2X : Dashboard",
-};
+import HomePage from "../pages/home";
 
 export const AppComponent = () => {
   return (
     <div>
-      {/* <CustomNavbar></CustomNavbar>,
-      <MainContent></MainContent> */
-      /* <SideNav></SideNav> */}
-      <SignInPage></SignInPage>
+      <HomePage></HomePage>
     </div>
   );
 };
-
-export default AppComponent;
