@@ -1,10 +1,19 @@
 "use client";
 
+import { MenuItem, Select } from "@mui/material";
+import { useState } from "react";
+
 interface NavbarProps {
   LogIn: any;
 }
 
 export const CustomNavbar = (props: NavbarProps) => {
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+
+  const handleProfileClick = () => {
+    setIsProfileOpen(!isProfileOpen);
+  };
+
   return (
     <div className="bg-gradient-to-r from-fuchsia-950 to-gray-950 h-20">
       <h1 className=" text-purple-600/100 font-bold text-3xl flex align-middle py-5 px-4">
@@ -20,11 +29,19 @@ export const CustomNavbar = (props: NavbarProps) => {
         <li className="text-slate-200/100 list-none mx-5 cursor-pointer">
           ABOUT US
         </li>
-        <li
-          className="text-slate-200/100 list-none mx-3 cursor-pointer"
-          onClick={() => props.LogIn()}
-        >
-          Login
+        <li className="text-slate-200/100 list-none mx-3 cursor-pointer">
+          PROFILE
+          <span onClick={handleProfileClick}> ▼</span>
+          {isProfileOpen && (
+            <Select
+              open={isProfileOpen}
+              onClose={() => setIsProfileOpen(false)}
+              onOpen={() => setIsProfileOpen(true)}
+            >
+              <MenuItem onClick={() => props.LogIn()}>LogOut</MenuItem>
+              <MenuItem>Account</MenuItem>
+            </Select>
+          )}
         </li>
       </div>
     </div>
