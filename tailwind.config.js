@@ -14,6 +14,8 @@ module.exports = {
       colors: {
         // light mode
         "custom-purple": "#2e1e31",
+        "c-purple": "#28042F",
+        "b-purple": "#581065",
         tremor: {
           brand: {
             faint: "#eff6ff", // blue-50

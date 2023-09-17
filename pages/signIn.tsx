@@ -25,7 +25,7 @@ export default function SignIn() {
   };
 
   return (
-    <div className="bg-gradient-to-r from-fuchsia-950 to-gray-950 h-[100vh] text-white">
+    <div className="bg-gradient-to-r from-c-purple to-gray-950 h-[100vh] text-white">
       <h1 className=" text-purple-600/100 font-bold text-8xl flex align-middle py-12 px-4">
         tecH_2x
       </h1>
