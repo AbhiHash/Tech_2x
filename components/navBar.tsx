@@ -15,7 +15,7 @@ export const CustomNavbar = (props: NavbarProps) => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-fuchsia-950 to-gray-950 h-20">
+    <div className="bg-gradient-to-r from-c-purple to-gray-950 h-20">
       <h1 className=" text-purple-600/100 font-bold text-3xl flex align-middle py-5 px-4">
         tecH_2x
       </h1>
@@ -44,6 +44,9 @@ export const CustomNavbar = (props: NavbarProps) => {
           )}
         </li>
       </div>
+      <hr className="flex-grow border-t border-neutral-600 relative mt-8" />
+
+      {/* <hr className="flex-grow border-t border-gray-300"> */}
     </div>
   );
 };
