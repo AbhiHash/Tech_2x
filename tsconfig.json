@@ -35,7 +35,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "pages/api/auth/[...nextauth].js", "lib/dbConnect.js", "lib/db.js"  ],
   "exclude": [
     "node_modules"
   ]
