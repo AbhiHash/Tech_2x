@@ -1,21 +1,24 @@
 "use client";
 
-// import { Dashboard } from "@/dashboard";
-import { Button, Icon } from "@mui/material";  
+import { Button, Icon, Alert } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { signIn } from "next-auth/react";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
+import { useState } from "react";
 
 export default function SignIn() {
-  const data = {
-    name: "abhitripathi9800q@gmail.com",
-    password: "bdjewfbjewrfreg",
-  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
 
   const onSubmit = async () => {
-    const result = await signIn("credentials", {
-      username: data.name,
-      password: data.password,
+    if (!email || !password) {
+      setError(true);
+      return;
+    }
+    await signIn("credentials", {
+      username: email,
+      password: password,
       redirect: true,
       callbackUrl: "/home",
     });
@@ -34,11 +37,13 @@ export default function SignIn() {
           variant="outlined"
           color="secondary"
           sx={{ input: { color: "white" } }}
+          onChange={(e) => setEmail(e.target.value)}
           InputLabelProps={{
             style: { color: "#fff" },
           }}
           className="bg-gradient-to-r from-fuchsia-950 to-slate-900 w-96 fixed right-52 top-72"
         />
+        {/* {error ? <Alert severity="error">Email is required </Alert> : null} */}
         <TextField
           id="outlined-basic"
           label="Password"
@@ -46,11 +51,14 @@ export default function SignIn() {
           type="password"
           color="secondary"
           sx={{ input: { color: "white" } }}
+          onChange={(e) => setPassword(e.target.value)}
           InputLabelProps={{
             style: { color: "#fff" },
           }}
           className="bg-gradient-to-r from-fuchsia-950 to-slate-900 w-96 fixed right-52 top-96 "
         />
+        {/* {error ? <Alert severity="error">Password is required </Alert> : null} */}
+
         <Button
           variant="contained"
           onClick={onSubmit}
