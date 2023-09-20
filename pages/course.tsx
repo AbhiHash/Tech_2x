@@ -45,18 +45,16 @@ export default function Course() {
           ewfewfe
         </div>
         <div className="relative z-0 top-[-28.3vw] left-[71vw] rounded-lg border-2 border-b-purple h-[21vh] w-[17vw] text-white">
-          <div className="relative z-0 top-[-28.3vw] left-[71vw] rounded-lg border-2 border-b-purple h-[21vh] w-[17vw] text-white">
+          {/* <div className="relative z-0 top-[-28.3vw] left-[71vw] rounded-lg border-2 border-b-purple h-[21vh] w-[17vw] text-white">
             {divData
               .slice(1)
               .map((item) =>
                 generateDiv(
                   item.gradientColor,
-                  item.text,
-                  item.width,
-                  item.height
+                  item.tex
                 )
               )}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
