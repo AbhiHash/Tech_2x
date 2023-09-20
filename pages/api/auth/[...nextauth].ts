@@ -1,28 +1,30 @@
-import NextAuth from "next-auth";
+import NextAuth, { SessionOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { ensureDbConnected } from "../../../lib/dbConnect";
 import { User } from "../../../lib/db";
-export const authOptions = {
+import { ensureDbConnected } from "../../../lib/dbConnect";
+import type { NextAuthOptions } from "next-auth";
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
 
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "username" },
+        email: { label: "Email", type: "text", placeholder: "email" },
         password: { label: "Password", type: "password" },
       },
 
-      async authorize(credentials, req) {
+      async authorize(credentials: any, req) {
         await ensureDbConnected();
+
         if (!credentials) {
           return null;
         }
-        const username = credentials.username;
+        const email = credentials.email;
         const password = credentials.password;
-        const user = await User.findOne({ username });
+        const user = await User.findOne({ email });
 
         if (!user) {
-          const obj = { username: username, password: password };
+          const obj = { username: email, password: password };
           const newUser = new User(obj);
           let userDb = await newUser.save();
           return {
@@ -33,6 +35,7 @@ export const authOptions = {
           if (user.password !== password) {
             return null;
           }
+
           return {
             id: user._id,
             email: user.username,
@@ -41,6 +44,13 @@ export const authOptions = {
       },
     }),
   ],
+
+  secret: process.env.NEXT_AUTH_SECRET,
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60,
+  },
+
   pages: {
     signIn: "../../signIn",
   },

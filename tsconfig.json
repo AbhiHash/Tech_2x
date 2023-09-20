@@ -1,17 +1,13 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "esnext",
+    "module": "ESNext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -24,9 +20,7 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "pages/*"
-      ]
+      "@/pages/*": ["./pages/*"]
     },
     "forceConsistentCasingInFileNames": true
   },
@@ -34,9 +28,15 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "pages/api/auth/[...nextauth].js", "lib/dbConnect.js", "lib/db.js"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    ".next/types/**/*.ts",
+    "pages/api/**/*",
+    "lib/**/*",
+    "lib/server.js", // "lib/dbConnect.js",
+    "index.js" // "lib/db.js"
+  ],
+  "exclude": ["node_modules"]
+  // "ts-node": {
+  //   "esm": true,
+  //   "experimentalSpecifierResolution": "node"
+  // }
 }

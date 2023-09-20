@@ -1,11 +1,12 @@
 "use client";
 
 import { CustomNavbar } from "components/navBar";
+import { signOut } from "next-auth/react";
 
 export default function Course() {
   return (
     <div>
-      <CustomNavbar></CustomNavbar>
+      <CustomNavbar LogOut={signOut} />
       <div className="bg-gradient-to-r from-c-purple to-gray-950 h-[91.5vh] w-full">
         <div className="bg-custom-purple w-[98vw] h-52 relative z-0 top-6 left-5 right-5 rounded-lg text-white">
           DATA STRUCTURES AND ALGORITHMS

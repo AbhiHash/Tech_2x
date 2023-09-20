@@ -1,10 +1,11 @@
 "use client";
 
 import { MenuItem, Select } from "@mui/material";
+import Link from "next/link";
 import { useState } from "react";
 
 interface NavbarProps {
-  LogIn: any;
+  LogOut?: any;
 }
 
 export const CustomNavbar = (props: NavbarProps) => {
@@ -27,6 +28,9 @@ export const CustomNavbar = (props: NavbarProps) => {
           MY COURSES
         </li>
         <li className="text-slate-200/100 list-none mx-5 cursor-pointer">
+          <Link href="/plan-assessment">SCHEDULE YOUR TEST </Link>
+        </li>
+        <li className="text-slate-200/100 list-none mx-5 cursor-pointer">
           ABOUT US
         </li>
         <li className="text-slate-200/100 list-none mx-3 cursor-pointer">
@@ -38,37 +42,13 @@ export const CustomNavbar = (props: NavbarProps) => {
               onClose={() => setIsProfileOpen(false)}
               onOpen={() => setIsProfileOpen(true)}
             >
-              <MenuItem onClick={() => props.LogIn()}>LogOut</MenuItem>
+              <MenuItem onClick={() => props.LogOut()}>LogOut</MenuItem>
               <MenuItem>Account</MenuItem>
             </Select>
           )}
         </li>
       </div>
       <hr className="flex-grow border-t border-neutral-600 relative mt-8" />
-
-      {/* <hr className="flex-grow border-t border-gray-300"> */}
     </div>
   );
 };
-
-{
-  /* <div className=" inline-flex w-1/12 justify-between text-slate-200/100 ">
-        <button>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M5.636 5.636a9 9 0 1012.728 0M12 3v9"
-            />
-          </svg>
-          LOGOUT
-        </button>
-      </div> */
-}

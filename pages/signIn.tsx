@@ -17,10 +17,10 @@ export default function SignIn() {
       return;
     }
     await signIn("credentials", {
-      username: email,
+      email: email,
       password: password,
       redirect: true,
-      callbackUrl: "/home",
+      callbackUrl: "/",
     });
   };
 
@@ -43,7 +43,7 @@ export default function SignIn() {
           }}
           className="bg-gradient-to-r from-fuchsia-950 to-slate-900 w-96 fixed right-52 top-72"
         />
-        {/* {error ? <Alert severity="error">Email is required </Alert> : null} */}
+        {error ? <Alert severity="error">Email is required </Alert> : null}
         <TextField
           id="outlined-basic"
           label="Password"
@@ -57,7 +57,7 @@ export default function SignIn() {
           }}
           className="bg-gradient-to-r from-fuchsia-950 to-slate-900 w-96 fixed right-52 top-96 "
         />
-        {/* {error ? <Alert severity="error">Password is required </Alert> : null} */}
+        {error ? <Alert severity="error">Password is required </Alert> : null}
 
         <Button
           variant="contained"
