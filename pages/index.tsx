@@ -6,11 +6,11 @@ import { signOut } from "next-auth/react";
 import SignIn from "./signIn";
 
 export default function Ssr(session: any) {
+  
   return (
     <>
       {session.email ? (
-        <>
-          <CustomNavbar LogOut={signOut} />
+        <> 
           <MainContent />
         </>
       ) : (

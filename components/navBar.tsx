@@ -3,6 +3,9 @@
 import { MenuItem, Select } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
+import AccountCircleIcon from "@mui/icons-material/AccountCircleOutlined";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import HomeIcon from "@mui/icons-material/Home";
 
 interface NavbarProps {
   LogOut?: any;
@@ -20,31 +23,30 @@ export const CustomNavbar = (props: NavbarProps) => {
       <h1 className=" text-purple-600/100 font-bold text-3xl flex align-middle py-5 px-4">
         tecH_2x
       </h1>
-      <div className="  flex justify-end align-middle -mt-11">
-        <li className="text-slate-200/100 list-none mx-5 cursor-pointer">
-          HOME
+      <div className="  flex justify-end align-middle -mt-11 cursor-pointer text-slate-200/100 list-none">
+        <li className="mx-5 ">
+          <Link href="/">
+            <HomeIcon></HomeIcon>
+          </Link>
         </li>
-        <li className="text-slate-200/100 list-none mx-5 cursor-pointer">
-          MY COURSES
+        <li className="mx-5 ">
+          <NotificationsIcon></NotificationsIcon>
         </li>
-        <li className="text-slate-200/100 list-none mx-5 cursor-pointer">
-          <Link href="/plan-assessment">SCHEDULE YOUR TEST </Link>
-        </li>
-        <li className="text-slate-200/100 list-none mx-5 cursor-pointer">
-          ABOUT US
-        </li>
-        <li className="text-slate-200/100 list-none mx-3 cursor-pointer">
-          PROFILE
-          <span onClick={handleProfileClick}> ▼</span>
+        <li className="mx-3 relative">
+          <div className="relative mx-3">
+            <AccountCircleIcon onClick={handleProfileClick}></AccountCircleIcon>
+          </div>
           {isProfileOpen && (
-            <Select
-              open={isProfileOpen}
-              onClose={() => setIsProfileOpen(false)}
-              onOpen={() => setIsProfileOpen(true)}
-            >
-              <MenuItem onClick={() => props.LogOut()}>LogOut</MenuItem>
-              <MenuItem>Account</MenuItem>
-            </Select>
+            <div className="absolute top-2 right-0 z-20">
+              <Select
+                open={isProfileOpen}
+                onClose={() => setIsProfileOpen(false)}
+                onOpen={() => setIsProfileOpen(true)}
+              >
+                <Link href="/plan-assessment">Schdeule Test </Link>
+                <MenuItem onClick={() => props.LogOut()}>LogOut</MenuItem>
+              </Select>
+            </div>
           )}
         </li>
       </div>
