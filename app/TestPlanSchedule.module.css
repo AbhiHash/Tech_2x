@@ -1,0 +1,8 @@
+.rbc-month-view {
+  border-color: #940d0d; /* Change to your desired color */
+}
+
+
+.custom-calendar .rbc-month-view .rbc-date-cell {
+  background-color: transparent; /* Set your desired background color here */
+}
