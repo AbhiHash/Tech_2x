@@ -11,6 +11,9 @@ module.exports = {
     transparent: "transparent",
     current: "currentColor",
     extend: {
+      borderColor: {
+        red: "#ff0000", // You can replace this with your desired color code
+      },
       colors: {
         // light mode
         "custom-purple": "#2e1e31",
@@ -46,6 +49,7 @@ module.exports = {
             inverted: "#ffffff", // white
           },
         },
+
         // dark mode
         "dark-tremor": {
           brand: {
