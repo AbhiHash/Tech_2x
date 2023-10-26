@@ -1,8 +1,4 @@
-import { motion } from "framer-motion";
 import VideoPlayer from "components/videoplayer";
-import { CustomNavbar } from "components/navBar";
-import { signOut } from "next-auth/react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { topics } from "../../../data/topic";
 import { videos } from "../../../data/video";
@@ -10,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import CommentCard from "components/comment";
 import { Button, Icon } from "@tremor/react";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
+import { CourseSidebar } from "components/sideNav";
 
 export default function VideoCoursePage() {
   const initialData = {
@@ -26,8 +23,7 @@ export default function VideoCoursePage() {
   const router = useRouter();
   const [dbVideos, setVideosData] = useState([]);
   const { slug } = router.query;
-  const [videoData, setVideoData] = useState(null);
-  const [loadComment, setLoadComment] = useState(false);
+  const [videoData, setVideoData] = useState([]);
   const [commentData, setCommentData] = useState([]);
   const [vidOptions, setOptions] = useState(initialData);
   const inputCommentRef = useRef(null);
@@ -40,17 +36,12 @@ export default function VideoCoursePage() {
       });
       setVideosData(allVideos);
     }
-  }, [slug]);
+  }, [slug, commentData]);
 
   const onVideoPlayerReady = (player: any) => {
     console.log("Video player is ready:", player);
   };
 
-  const loadComments = () => {
-    console.log(videoData, "this is loaded comment ");
-    setCommentData(videoData.comments);
-    setLoadComment(!loadComment);
-  };
 
   const postComment = () => {
     const value = inputCommentRef.current?.value || "";
@@ -62,8 +53,7 @@ export default function VideoCoursePage() {
       replies: [],
     };
 
-    const newComments = [...commentData, comment];
-    console.log(newComments, " new Comments ");
+    const newComments = [comment];
     setCommentData(newComments);
     inputCommentRef.current.value = "";
 
@@ -83,29 +73,15 @@ export default function VideoCoursePage() {
       ],
       autoplay: false,
     };
+    setCommentData(videoData.comments);
+
     setOptions(VIDEOJS_OPTIONS);
   }
 
   return (
     <div className="flex h-screen w-full">
       {/* side bar section  */}
-      <div className="w-1/4 h-screen bg-gray-200 p-4 fixed top-0 left-0 overflow-y-auto">
-        <h2 className="text-lg font-semibold"> Content </h2>
-        {dbVideos.length > 0 && (
-          <ul className="mt-4">
-            {dbVideos.map((item: any, index) => (
-              <motion.li
-                key={item._id}
-                className="p-2 mb-2 bg-white rounded-lg shadow cursor-pointer"
-                whileHover={{ scale: 1.05 }}
-                onClick={() => openVideo(item)}
-              >
-                {item.VideoKey}
-              </motion.li>
-            ))}
-          </ul>
-        )}
-      </div>
+      <CourseSidebar dbVideos={dbVideos} openVideo={openVideo} />
 
       {/* Video section  */}
 
@@ -114,6 +90,7 @@ export default function VideoCoursePage() {
           <h1 className="text-2xl font-bold">{`${
             videoData ? videoData.VideoKey : "Introduction"
           }`}</h1>
+
           <div className="w-full aspect-w-18 aspect-h-9">
             <VideoPlayer options={vidOptions} onReady={onVideoPlayerReady} />
           </div>
@@ -135,10 +112,13 @@ export default function VideoCoursePage() {
             Post Comment
           </button>
         </div>
-
-        {loadComment ? <CommentCard commentData={commentData} /> : null}
-
-        <Button
+        <CommentCard commentData={commentData} />
+      </div>
+    </div>
+  );
+}
+{
+  /* <Button
           className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-0 w-60 mt-8 flex mr-auto ml-auto rounded"
           onClick={loadComments}
         >
@@ -151,8 +131,5 @@ export default function VideoCoursePage() {
             />
             <span className="text-base ml-1">Load Comments</span>
           </span>
-        </Button>
-      </div>
-    </div>
-  );
+        </Button> */
 }

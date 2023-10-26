@@ -3,6 +3,7 @@ import videojs from "video.js";
 import "video.js/dist/video-js.css"; // Import Video.js styles
 
 const VideoPlayer = (props: any) => {
+  console.log("heelo  njncd ")
   const placeholderRef = React.useRef(null);
   const playerRef: any = React.useRef(null);
   const { options, onReady } = props;

@@ -1,22 +1,24 @@
 "use client";
+import { motion } from "framer-motion";
 
-export const SideNav = () => {
+export const CourseSidebar = ({ dbVideos, openVideo }: any) => {
   return (
-    <div className="bg-slate-950 h-[90vh] w-60 fixed left-1 top-20 ">
-      <h1 className="text-slate-200 flex justify-center m-5 text-2xl">
-        <li className="bg-gradient-to-r from-fuchsia-950 to-gray-950 w-12 -ml-9 mr-4 list-none flex justify-center text-slate-100 font-bold border-2 border-fuchsia-950 ">
-          A
-        </li>
-        Abhishek
-      </h1>
-      <li className="text-slate-200 flex  ml-4 mt-10 text-xl list-none">
-        Dashboard
-      </li>
-      <li className="text-slate-200 flex  m-4 text-xl list-none">
-        Notification
-      </li>
-      <li className="text-slate-200 flex  m-4 text-xl list-none ">Account</li>
-      <li className="text-slate-200 flex  m-4 text-xl list-none ">Setting</li>
+    <div className="w-1/4 h-screen bg-gray-200 p-4 fixed top-0 left-0 overflow-y-auto">
+      <h2 className="text-lg font-semibold"> Content </h2>
+      {dbVideos.length > 0 && (
+        <ul className="mt-4">
+          {dbVideos.map((item: any, index: number) => (
+            <motion.li
+              key={item._id}
+              className="p-2 mb-2 bg-white rounded-lg shadow cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              onClick={() => openVideo(item)}
+            >
+              {item.VideoKey}
+            </motion.li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
