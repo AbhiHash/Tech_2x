@@ -1,8 +1,9 @@
 "use client";
 
-import { CustomNavbar } from "components/navBar";
-import { signOut } from "next-auth/react";
 import Link from "next/link";
+import LinearProgress, {
+  LinearProgressProps,
+} from "@mui/material/LinearProgress";
 
 export default function Course() {
   const renderCustomDiv = (
@@ -28,10 +29,21 @@ export default function Course() {
 
   return (
     <div>
-      {/* <CustomNavbar LogOut={signOut} /> */}
       <div className="bg-gradient-to-r from-c-purple to-gray-950 h-[91.5vh] w-full">
-        <div className="bg-custom-purple w-[98vw] h-52 relative z-0 top-6 left-5 right-5 rounded-lg text-white">
+        <div className="bg-custom-purple w-[98vw] h-40 relative z-0 top-6 left-5 right-5 rounded-lg text-white text-4xl py-4 px-6">
           DATA STRUCTURES AND ALGORITHMS
+          <LinearProgress color="secondary" className="w-96 pt-3 mt-4" />
+          <div className="flex text-base list-none pt-12 pl-4 cursor-pointer">
+            <li> CONTENT</li>
+            <li className="ml-8"> CONTEST</li>
+            <li className="ml-8"> NOTICEBOARD</li>
+          </div>
+          <p
+            className={`bg-gradient-to-r from-c-purple to-gray-950 h-12 w-[12vw] fixed right-12 top-32 cursor-pointer`}
+          ></p>
+          <p
+            className={`bg-gradient-to-r from-c-purple to-gray-950 h-12 w-[12vw] fixed right-12 top-48 cursor-pointer`}
+          ></p>
         </div>
         <div className="relative z-0 top-10 left-[10vw] rounded-lg border-2 border-b-purple h-[63vh] w-[60vw] text-white text-lg flex-col align-middle">
           {divData.map((item, index) => (
@@ -43,15 +55,18 @@ export default function Course() {
               }}
             >
               <p
-                className={`bg-gradient-to-r from-c-purple to-gray-950 h-12 w-[58vw] relative left-4 right-4 mt-4 cursor-pointer`}
+                className={`bg-gradient-to-r from-c-purple to-gray-950 h-20 w-[58vw] relative left-4 right-4 mt-4 cursor-pointer pt-6 px-8`}
               >
                 {item.text}
+              
               </p>
             </Link>
           ))}
         </div>
         <div className="relative z-0 top-[-29.3vw] left-[71vw] rounded-lg border-2 border-b-purple h-[40vh] w-[17vw] text-white">
-          ewfewfe
+          <h1 className=" text-purple-600/100 font-bold text-3xl flex align-middle py-5 px-4">
+            tecH_2x
+          </h1>
         </div>
         <div className="relative z-0 top-[-28.3vw] left-[71vw] rounded-lg border-2 border-b-purple h-[21vh] w-[17vw] text-white">
           {renderCustomDiv(
